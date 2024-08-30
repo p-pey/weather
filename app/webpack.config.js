@@ -24,6 +24,14 @@ module.exports = {
         loader: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+        ],
+      },
     ],
   },
   plugins: [
@@ -43,6 +51,9 @@ module.exports = {
     }),
   ],
   devServer: {
+    hot: true,
+    liveReload: true,
+    open: true,
     static: {
       directory: path.join(__dirname, 'public')
     },
