@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const path =  require('path');
+const pkgJsonDeps = require('./package.json').dependencies;
 
 /**
  * @type {import('webpack').Configuration}
@@ -33,11 +34,11 @@ module.exports = {
       name: 'app',
       filename: 'remoteEntry.js',
       exposes: {
-        './src/index.tsx': './src/index.tsx',
+        './weather': './src/components/root',
       },
       shared: {
-        react: { singleton: true, eager: true },
-        'react-dom': { singleton: true, eager: true },
+        react: { singleton: true, eager: true, requiredVersion: pkgJsonDeps['react'] },
+        'react-dom': { singleton: true, eager: true, requiredVersion: pkgJsonDeps['react-dom'] },
       },
     }),
   ],
@@ -46,6 +47,6 @@ module.exports = {
       directory: path.join(__dirname, 'public')
     },
     compress: true,
-    port: 3001,
+    port: 4001,
   },
 };

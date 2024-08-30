@@ -3,29 +3,25 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js', 
+  entry: './src/index.js',
   mode: "development",
   output: {
     filename: 'bundle.js',
     path: __dirname + '/dist'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    extensions: ['.js'],
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader', 
+          loader: 'babel-loader',
         },
       },
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-      },
+
     ],
   },
   plugins: [
@@ -34,13 +30,13 @@ module.exports = {
       inject: 'body',
     }),
     new ModuleFederationPlugin({
-      name: 'landingPage',
+      name: 'landing',
       remotes: {
-        reactApp: 'app@http://localhost:3001/remoteEntry.js', // Remote React app
+        app: 'app@http://localhost:4001/remoteEntry.js',
       },
       shared: {
-        react: { singleton: true, eager: true }, // Sharing React
-        'react-dom': { singleton: true, eager: true }, // Sharing ReactDOM
+        react: { singleton: true, eager: true },
+        'react-dom': { singleton: true, eager: true },
       },
     }),
   ],
@@ -49,6 +45,6 @@ module.exports = {
       directory: path.join(__dirname, 'public')
     },
     compress: true,
-    port: 3002,
+    port: 4000,
   },
 };

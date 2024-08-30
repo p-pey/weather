@@ -16,12 +16,12 @@ html, body, #app {
 
        display: flex;
        flex-direction: column;
-       justify-content: center;
+       align-items: center;
 }
 
 #landing-container > header {
        width: 100%;
-       height: 55px;
+       max-height: 55px;
        border-bottom: 1px solid #ccc;
        padding: 0.5rem;
 }

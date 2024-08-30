@@ -11,7 +11,7 @@ class LandingActions {
                 this.render();
                 this._isLoaded = true;
             }
-        
+
       }
 
       _generateAppContainer(){
@@ -22,7 +22,7 @@ class LandingActions {
       }
      async _Loader() {
         try {
-            const Application = await import("../../app/src/components/root");
+            const Application = await import("app/weather");
             return Application.default;
         } catch(e) {
             return Promise.reject(e);
