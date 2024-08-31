@@ -1,11 +1,19 @@
 import '../assets/styles/index.css';
-import { Container } from './weather/container';
+import { LocationProvider } from './LocationProvider';
+import { Weather } from './weather/weather';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import 'lib/axios';
+const queryClient = new QueryClient();
 
 function Root() {
   return (
-    <div className="bg-gray-300 h-full w-full flex items-center justify-center p-24">
-      <Container />
-    </div>
+    <LocationProvider>
+      <QueryClientProvider client={queryClient}>
+        <div className="bg-gray-300 h-full w-full flex items-center justify-center p-24">
+          <Weather />
+        </div>
+      </QueryClientProvider>
+    </LocationProvider>
   );
 }
 

@@ -1,7 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const webpack = require('webpack');
+const ModuleFederationPlugin = webpack.container.ModuleFederationPlugin;
 const path =  require('path');
 const pkgJsonDeps = require('./package.json').dependencies;
+require('dotenv').config({
+  path: path.resolve(__dirname, '.env')
+});
 
 /**
  * @type {import('webpack').Configuration}
@@ -15,6 +19,7 @@ module.exports = {
     publicPath: 'auto'
   },
   resolve: {
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
@@ -35,6 +40,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env)
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
