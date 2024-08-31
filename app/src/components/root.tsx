@@ -1,7 +1,12 @@
-import "../assets/styles/index.css";
-export default function Root() {
-  return <h2 className="bg-amber-300 relative text-blue-50">
-    Hello from Weather App!!!
-  </h2>
-};
+import '../assets/styles/index.css';
+import { Container } from './weather/container';
 
+function Root() {
+  return (
+    <div className="bg-gray-300 h-full w-full flex items-center justify-center p-24">
+      <Container />
+    </div>
+  );
+}
+
+export default Root;

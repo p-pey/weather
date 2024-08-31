@@ -5,14 +5,14 @@ const pkgJsonDeps = require('./package.json').dependencies;
 
 /**
  * @type {import('webpack').Configuration}
- * **/
-
+ **/
 module.exports = {
   entry: './src/index.tsx',
   mode: "development",
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: 'auto'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -51,12 +51,10 @@ module.exports = {
     }),
   ],
   devServer: {
-    hot: true,
+    hot: false,
     liveReload: true,
-    open: true,
-    static: {
-      directory: path.join(__dirname, 'public')
-    },
+    open: false,
+    watchFiles: ['src/*'],
     compress: true,
     port: 4001,
   },
