@@ -10,7 +10,7 @@ export class WeatherProxy implements IWeatherProxy {
               this._geo = geo;
        };
        async getDay(): Promise<AxiosResponse<ForecastResponse>> {
-        return axios.get(`/forecast?lat=${ this._geo.lat }&lon=${ this._geo.lon }&exclude=daily,minutely,current,alerts`);
+        return axios.get(`/forecast?lat=${ this._geo.lat }&lon=${ this._geo.lon }`);
        };
      
 }

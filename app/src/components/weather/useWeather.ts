@@ -6,7 +6,6 @@ import { WeatherService } from 'services/weather/weather.service';
 export function useWeather() {
   const service = useRef<WeatherService | undefined>(undefined);
   const [geoLocation, setGeoLocation] = useState<{ lat: number; lon: number } | undefined>(undefined);
- 
   const { data, isLoading, error } = useQuery({
     queryFn: ()=>  service.current?.getToday(),
     enabled: !!geoLocation,

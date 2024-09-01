@@ -5,11 +5,11 @@ export function Weather() {
   const weatherHook = useWeather();
 
   if (!weatherHook.isReady) {
-    return <h4>Getting your Location</h4>;
+    return <h4 data-cy="weather">Getting your Location</h4>;
   }
 
   return (
-    <div className="rounded-2xl w-full h-full shadow-lg relative bg-inherit p-5">
+    <div data-cy="weather" className="rounded-2xl w-full h-full shadow-lg relative bg-inherit p-5">
       {weatherHook.isLoading ? (
         'Getting Weather Data ...'
       ) : (

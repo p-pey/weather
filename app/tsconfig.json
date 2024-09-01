@@ -1,6 +1,7 @@
 {
        "compilerOptions": {
          "target": "ES6",                      
+         "types": ["node"],
          "module": "ESNext",                   
          "jsx": "react-jsx",                   
          "strict": true,                       
@@ -14,7 +15,7 @@
          },
          "typeRoots": ["./node_modules/@types", "src/types/global.ts"]
        },
-       "include": ["src/**/*"],
+       "include": ["src/**/*", "cypress/**/*.ts", "cypress/**/*.js"],
        "exclude": ["node_modules", "dist"],
      }
      

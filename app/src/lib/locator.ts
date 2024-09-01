@@ -3,18 +3,13 @@ class Locator {
 
   async grant() {
     return new Promise<void>((resolve, reject) => {
-      const navigatorGeoLocation = navigator.geolocation;
-      if (navigatorGeoLocation) {
-        this._geoLocation = navigatorGeoLocation;
-        navigatorGeoLocation.getCurrentPosition(
-          () => {
-            resolve();
-          },
-          (error) => {
-            reject(error.message);
-          }
-        );
-      }
+      if (window.navigator) {
+        this._geoLocation = window.navigator.geolocation
+       resolve();
+      } else {
+        reject('Browser Denied')
+      } 
+
     });
   }
 
