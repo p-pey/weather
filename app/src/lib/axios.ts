@@ -5,8 +5,9 @@ axios.defaults.baseURL = WeatherConstants.WEATHER_BASE_URL;
 
 axios.interceptors.request.use((config) => {
   config.url = config.url
-    ?.concat('&appid=', WeatherConstants.WEATHER_API_KEY)
-    .concat('&lang=', WeatherConstants.WEATHER_API_LANG);
+    ?.concat('&APPID=', WeatherConstants.WEATHER_API_KEY)
+    .concat('&lang=', WeatherConstants.WEATHER_API_LANG)
+    .concat('&units=', WeatherConstants.WEATHER_API_UNIT);
   return config;
 });
 

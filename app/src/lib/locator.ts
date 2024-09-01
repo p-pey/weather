@@ -1,8 +1,6 @@
 class Locator {
   private _geoLocation: typeof navigator.geolocation | undefined;
 
-  private _brokenAccess() {}
-
   async grant() {
     return new Promise<void>((resolve, reject) => {
       const navigatorGeoLocation = navigator.geolocation;

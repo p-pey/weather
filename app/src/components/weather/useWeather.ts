@@ -1,6 +1,5 @@
 import { Locator } from 'lib/locator';
-import { OptionType } from './_types';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { WeatherService } from 'services/weather/weather.service';
 
@@ -12,37 +11,15 @@ export function useWeather() {
     queryFn: ()=>  service.current?.getToday(),
     enabled: !!geoLocation,
   });
-  const selectDateHandler = async (date: OptionType['value']) => {
-    switch (date) {
-      case 'Today':
-        {
-        }
-        break;
-      case 'Tomorrow':
-        {
-        }
-        break;
-      case 'CurrentWeek':
-        {
-        }
-        break;
-      case 'NextWeek':
-        {
-        }
-        break;
-      default:
-        Promise.reject();
-    }
-  };
+  
   useEffect(() => {
     Locator.getLocation().then((locate) => {
       service.current = new WeatherService(locate);
       setGeoLocation(locate);
     });
   }, []);
-  console.log(data, error, isLoading)
   return {
-    selectDateHandler,
+    isReady: !!geoLocation,
     data,
     isLoading,
     error,
