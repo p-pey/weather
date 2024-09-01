@@ -1,0 +1,11 @@
+webpack module federation -> easily share common dependency between host and remote, manage projects on isolated space.
+
+build react app from scratch -> Less dependencies, implement module federation.
+
+react-query -> caching, easy get states like loading, error. ( boost development speed )
+
+axios -> using interceptors and less config. ( boost development speed )
+
+tailwind css -> boost development speed by design fast as possible.
+
+architecture -> Separation of Concern: UI > service > proxy. to achieve maintainability and scalability.
