@@ -3,6 +3,7 @@ import { LocationProvider } from './LocationProvider';
 import { Weather } from './weather/weather';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import 'lib/axios';
+import 'lib/firebase';
 const queryClient = new QueryClient();
 
 function Root() {
